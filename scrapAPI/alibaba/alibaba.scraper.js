@@ -16,40 +16,6 @@ export async function getAllDataProductsAlibaba(browser, search) {
   await page.screenshot({ path: "erwe.jpg" });
   const allProductsData = await page.evaluate(getProductsData);
 
-  /*const allDataProducts = [];
-
-  for (let url of allURLS) {
-    console.log(url);
-    await page.goto(url);
-    await page.waitForSelector("h1", { timeout: 0 });
-    await page.waitForSelector(".product-price", { timeout: 0 });
-    const productData = await page.evaluate(() => {
-      const productTitle = document.querySelector("h1").innerText;
-      const $priceRange = document.querySelector(".price-range");
-      if ($priceRange) {
-        return {
-          productTitle,
-          prices: $priceRange.innerText,
-        };
-      } else {
-        const $prices = document.querySelectorAll(".price-item");
-        const prices = [];
-        $prices.forEach((x) => {
-          const pieces = x.children[0].innerText;
-          const price = x.children[1].children[0].innerText;
-
-          prices.push({ pieces, price });
-        });
-        return {
-          productTitle,
-          prices,
-        };
-      }
-    });
-
-    allDataProducts.push(productData);
-  }*/
-
   await browser.close();
   return allProductsData;
 }
