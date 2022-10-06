@@ -13,7 +13,6 @@ export async function getAllDataProductsAlibaba(browser, search) {
   await page.waitForSelector(".ui2-icon-listview", { timeout: 0 });
   await page.click(".ui2-icon-listview");
   await page.waitForSelector("[data-content=productItem]", { timeout: 0 });
-  await page.screenshot({ path: "erwe.jpg" });
   const allProductsData = await page.evaluate(getProductsData);
 
   await browser.close();
